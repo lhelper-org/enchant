@@ -36,8 +36,13 @@ libenchant_include_HEADERS = enchant.h enchant-provider.h enchant++.h
 libenchant_datadir = $(pkgdatadir)-@ENCHANT_MAJOR_VERSION@
 libenchant_data_DATA = enchant.ordering
 
+if BUILD_DOCS
 dist_man_MANS = enchant-@ENCHANT_MAJOR_VERSION@.1 enchant-lsmod-@ENCHANT_MAJOR_VERSION@.1 enchant.5
 nodist_doc_DATA = enchant-@ENCHANT_MAJOR_VERSION@.html enchant-lsmod-@ENCHANT_MAJOR_VERSION@.html enchant.html
+else
+dist_man_MANS =
+nodist_doc_DATA =
+endif
 
 edit = sed \
 	-e 's|DATADIR|$(datadir)|g'

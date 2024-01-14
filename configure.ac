@@ -146,6 +146,11 @@ PKG_CHECK_EXISTS([UnitTest++],
     [PKG_CHECK_MODULES(UNITTESTPP, [UnitTest++ >= 1.6])])
 AC_LANG_POP([C++])
 
+AC_ARG_ENABLE([docs],
+              [AS_HELP_STRING([--enable-docs],
+                              [Enable building of documentation (default: no)])],
+              [enable_docs=$enableval], [enable_docs=no])
+AM_CONDITIONAL([BUILD_DOCS], [test "x$enable_docs" = "xyes"])
 
 dnl Provider detection
 AC_DEFUN([ENCHANT_CHECK_PROVIDER_SETUP],
